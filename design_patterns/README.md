@@ -223,3 +223,34 @@ void main() {
   var singleton2 = Singleton('Different Data');
   print(singleton2.getData()); // Outputs: Initial Data (Singleton ensures only one instance)
 }
+
+# Decorator Pattern
+
+The Decorator pattern is a structural design pattern that allows behavior to be added to individual objects, either statically or dynamically, without affecting the behavior of other objects from the same class.
+
+## Usage
+
+- Define an interface for the components.
+- Create a concrete component class that implements the interface.
+- Define an abstract decorator class that also implements the interface and holds a reference to a component.
+- Create concrete decorator classes that extend the abstract decorator and add additional behavior.
+
+## Example
+
+```dart
+import 'package:your_project_name/design_patterns/decorator.dart';
+
+void main() {
+  var component = ConcreteComponent();
+  component.operate(); // Outputs: ConcreteComponent
+
+  var decoratorA = ConcreteDecoratorA(component);
+  decoratorA.operate(); // Outputs: ConcreteComponent -> Added Behavior A
+
+  var decoratorB = ConcreteDecoratorB(component);
+  decoratorB.operate(); // Outputs: ConcreteComponent -> Added Behavior B
+
+  // Decorators can be stacked
+  var decoratorAB = ConcreteDecoratorA(decoratorB);
+  decoratorAB.operate(); // Outputs: ConcreteComponent -> Added Behavior B -> Added Behavior A
+}
