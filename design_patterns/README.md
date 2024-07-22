@@ -142,3 +142,84 @@ void main() {
   result = context.executeStrategy();
   print(result);  // Output: ConcreteStrategyB: Algorithm B
 }
+
+# Prototype Pattern
+
+The Prototype pattern is a creational design pattern that allows an object to be used as a prototype to create new instances of itself. This pattern is useful when creating complex objects or when the initialization cost of an object is high.
+
+## Usage
+
+- Define a prototype interface with a method for cloning the object.
+- Create concrete prototype classes that implement the prototype interface.
+- Use the clone method to create new instances of the prototype.
+
+## Example
+
+```dart
+import 'package:design_patterns/design_patterns/prototype.dart';
+
+void main() {
+  var prototypeA = ConcretePrototypeA('Prototype A');
+  prototypeA.use();
+
+  var cloneA = prototypeA.clone();
+  cloneA.use();
+
+  print('---');
+
+  var prototypeB = ConcretePrototypeB('Prototype B');
+  prototypeB.use();
+
+  var cloneB = prototypeB.clone();
+  cloneB.use();
+}
+
+# Bridge Pattern
+
+The Bridge pattern is a structural design pattern that decouples an abstraction from its implementation so that the two can vary independently. This pattern is useful when you want to connect an abstract class and one of its implementations dynamically.
+
+## Usage
+
+- Define an abstraction and an implementor interface.
+- Create concrete implementations of the implementor interface.
+- Define concrete abstractions that contain an instance of the implementor interface and delegate the implementation to it.
+
+## Example
+
+```dart
+import 'package:your_project_name/design_patterns/bridge.dart';
+
+void main() {
+  var circle = ConcreteCircle();
+  circle.draw(); // Drawing a circle.
+
+  var square = ConcreteSquare();
+  square.draw(); // Drawing a square.
+
+  // Using dependency injection to change the implementor
+  square.setImplementor(CircleImplementor());
+  square.draw(); // Now it draws a circle with square's behavior.
+}
+
+# Singleton Pattern
+
+The Singleton pattern ensures that a class has only one instance and provides a global point of access to that instance.
+
+## Usage
+
+- Define a private constructor.
+- Create a static variable to hold the instance of the class.
+- Provide a factory constructor to control the instance creation.
+
+## Example
+
+```dart
+import 'package:design_patterns/design_patterns/singleton.dart';
+
+void main() {
+  var singleton1 = Singleton('Initial Data');
+  print(singleton1.getData()); // Outputs: Initial Data
+
+  var singleton2 = Singleton('Different Data');
+  print(singleton2.getData()); // Outputs: Initial Data (Singleton ensures only one instance)
+}
